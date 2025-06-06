@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hacker Vault - Stylish Sale Page</title>
+  <title>Hacker Vault - Lightweight Sale Page</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <style>
     /* Reset */
@@ -251,19 +251,19 @@
 
       <!-- Product 4 -->
       <div class="product-card">
-        <img src="https://via.placeholder.com/300x180/00ff99/000000?text=Encrypted+Phone" alt="Encrypted Phone" />
-        <div class="product-title">Encrypted Phone</div>
-        <div class="product-desc">Zero-trace burner device</div>
-        <div class="product-price">$199</div>
-        <a href="https://wa.me/923163954173?text=Hi,+I+want+to+buy+Encrypted+Phone" target="_blank" class="btn-buy">Buy</a>
+        <img src="https://via.placeholder.com/300x180/00ff99/000000?text=Encrypted+Notebook" alt="Encrypted Notebook" />
+        <div class="product-title">Encrypted Notebook</div>
+        <div class="product-desc">Secure notes with password lock</div>
+        <div class="product-price">$29</div>
+        <a href="https://wa.me/923163954173?text=Hi,+I+want+to+buy+Encrypted+Notebook" target="_blank" class="btn-buy">Buy</a>
       </div>
 
       <!-- Product 5 -->
       <div class="product-card">
         <img src="https://via.placeholder.com/300x180/00ff99/000000?text=Hacker+Glasses" alt="Hacker Glasses" />
         <div class="product-title">Hacker Glasses</div>
-        <div class="product-desc">Augmented reality stealth glasses</div>
-        <div class="product-price">$79</div>
+        <div class="product-desc">Blue-light filter glasses</div>
+        <div class="product-price">$59</div>
         <a href="https://wa.me/923163954173?text=Hi,+I+want+to+buy+Hacker+Glasses" target="_blank" class="btn-buy">Buy</a>
       </div>
 
@@ -271,121 +271,94 @@
       <div class="product-card">
         <img src="https://via.placeholder.com/300x180/00ff99/000000?text=Neon+Keyboard" alt="Neon Keyboard" />
         <div class="product-title">Neon Keyboard</div>
-        <div class="product-desc">Mechanical RGB with silent keys</div>
-        <div class="product-price">$59</div>
+        <div class="product-desc">Mechanical RGB keyboard</div>
+        <div class="product-price">$89</div>
         <a href="https://wa.me/923163954173?text=Hi,+I+want+to+buy+Neon+Keyboard" target="_blank" class="btn-buy">Buy</a>
       </div>
 
       <!-- Product 7 -->
       <div class="product-card">
-        <img src="https://via.placeholder.com/300x180/00ff99/000000?text=Digital+Watch" alt="Digital Watch" />
-        <div class="product-title">Digital Watch</div>
-        <div class="product-desc">Military-grade encrypted watch</div>
-        <div class="product-price">$89</div>
-        <a href="https://wa.me/923163954173?text=Hi,+I+want+to+buy+Digital+Watch" target="_blank" class="btn-buy">Buy</a>
+        <img src="https://via.placeholder.com/300x180/00ff99/000000?text=Crypto+Wallet" alt="Crypto Wallet" />
+        <div class="product-title">Crypto Wallet</div>
+        <div class="product-desc">Hardware crypto wallet</div>
+        <div class="product-price">$129</div>
+        <a href="https://wa.me/923163954173?text=Hi,+I+want+to+buy+Crypto+Wallet" target="_blank" class="btn-buy">Buy</a>
       </div>
 
       <!-- Product 8 -->
       <div class="product-card">
         <img src="https://via.placeholder.com/300x180/00ff99/000000?text=VPN+Subscription" alt="VPN Subscription" />
         <div class="product-title">VPN Subscription</div>
-        <div class="product-desc">1 Year secure access</div>
-        <div class="product-price">$29</div>
+        <div class="product-desc">Secure anonymous browsing</div>
+        <div class="product-price">$19/month</div>
         <a href="https://wa.me/923163954173?text=Hi,+I+want+to+buy+VPN+Subscription" target="_blank" class="btn-buy">Buy</a>
       </div>
     </div>
   </div>
 
-  <footer>© 2025 Hacker Vault - All rights reserved.</footer>
+  <footer>
+    &copy; 2025 Hacker Vault | Contact via WhatsApp
+  </footer>
 
   <script>
+    // Particle setup
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
     let width, height;
-    let particlesArray;
+    let particles = [];
 
-    // Particle class
     class Particle {
-      constructor(x, y, size, speedX, speedY) {
-        this.x = x;
-        this.y = y;
-        this.size = size;
-        this.speedX = speedX;
-        this.speedY = speedY;
+      constructor() {
+        this.reset();
       }
-
+      reset() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.size = 2 + Math.random() * 2;
+        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.speedY = (Math.random() - 0.5) * 0.5;
+        this.opacity = 0.2 + Math.random() * 0.8;
+      }
       update() {
         this.x += this.speedX;
         this.y += this.speedY;
 
-        // Wrap around screen edges
-        if (this.x > width) this.x = 0;
-        else if (this.x < 0) this.x = width;
-        if (this.y > height) this.y = 0;
-        else if (this.y < 0) this.y = height;
+        if (this.x < 0 || this.x > width) this.speedX *= -1;
+        if (this.y < 0 || this.y > height) this.speedY *= -1;
       }
-
       draw() {
-        ctx.fillStyle = '#00ff99';
-        ctx.shadowColor = '#00ff99';
-        ctx.shadowBlur = 8;
         ctx.beginPath();
+        ctx.shadowColor = '#00ff99';
+        ctx.shadowBlur = 10;
+        ctx.fillStyle = `rgba(0, 255, 153, ${this.opacity})`;
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
       }
     }
 
-    function initParticles(num) {
-      particlesArray = [];
-      for (let i = 0; i < num; i++) {
-        const size = Math.random() * 2 + 1;
-        const x = Math.random() * width;
-        const y = Math.random() * height;
-        const speedX = (Math.random() - 0.5) * 0.5;
-        const speedY = (Math.random() - 0.5) * 0.5;
-        particlesArray.push(new Particle(x, y, size, speedX, speedY));
-      }
-    }
-
-    function connectParticles() {
-      for (let a = 0; a < particlesArray.length; a++) {
-        for (let b = a + 1; b < particlesArray.length; b++) {
-          let dx = particlesArray[a].x - particlesArray[b].x;
-          let dy = particlesArray[a].y - particlesArray[b].y;
-          let distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < 120) {
-            ctx.strokeStyle = 'rgba(0, 255, 153,' + (1 - distance / 120) + ')';
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-            ctx.stroke();
-          }
-        }
+    function init() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      particles = [];
+      for (let i = 0; i < 60; i++) {
+        particles.push(new Particle());
       }
     }
 
     function animate() {
       ctx.clearRect(0, 0, width, height);
-      particlesArray.forEach(p => {
+      particles.forEach(p => {
         p.update();
         p.draw();
       });
-      connectParticles();
       requestAnimationFrame(animate);
     }
 
-    function resize() {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-      initParticles(80);
-    }
+    window.addEventListener('resize', () => {
+      init();
+    });
 
-    window.addEventListener('resize', resize);
-
-    // Initialize
-    resize();
+    init();
     animate();
   </script>
 
