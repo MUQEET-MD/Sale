@@ -36,6 +36,8 @@
       margin: 0 auto;
       padding: 40px 20px;
       text-align: center;
+      position: relative;
+      z-index: 1;
     }
 
     /* Glitch Title */
@@ -206,8 +208,9 @@
       padding: 20px;
       font-size: 0.9rem;
       color: #009966cc;
+      position: relative;
+      z-index: 1;
     }
-
   </style>
 </head>
 <body>
@@ -275,30 +278,72 @@
 
       <!-- Product 7 -->
       <div class="product-card">
-        <img src="https://via.placeholder.com/300x180/00ff99/000000?text=Crypto+Watch" alt="Crypto Watch" />
-        <div class="product-title">Crypto Watch</div>
-        <div class="product-desc">Blockchain-enabled smartwatch</div>
-        <div class="product-price">$129</div>
-        <a href="https://wa.me/923163954173?text=Hi,+I+want+to+buy+Crypto+Watch" target="_blank" class="btn-buy">Buy</a>
+        <img src="https://via.placeholder.com/300x180/00ff99/000000?text=Digital+Watch" alt="Digital Watch" />
+        <div class="product-title">Digital Watch</div>
+        <div class="product-desc">Military-grade encrypted watch</div>
+        <div class="product-price">$89</div>
+        <a href="https://wa.me/923163954173?text=Hi,+I+want+to+buy+Digital+Watch" target="_blank" class="btn-buy">Buy</a>
       </div>
 
       <!-- Product 8 -->
       <div class="product-card">
-        <img src="https://via.placeholder.com/300x180/00ff99/000000?text=Stealth+Backpack" alt="Stealth Backpack" />
-        <div class="product-title">Stealth Backpack</div>
-        <div class="product-desc">Anti-theft with RFID protection</div>
-        <div class="product-price">$89</div>
-        <a href="https://wa.me/923163954173?text=Hi,+I+want+to+buy+Stealth+Backpack" target="_blank" class="btn-buy">Buy</a>
+        <img src="https://via.placeholder.com/300x180/00ff99/000000?text=VPN+Subscription" alt="VPN Subscription" />
+        <div class="product-title">VPN Subscription</div>
+        <div class="product-desc">1 Year secure access</div>
+        <div class="product-price">$29</div>
+        <a href="https://wa.me/923163954173?text=Hi,+I+want+to+buy+VPN+Subscription" target="_blank" class="btn-buy">Buy</a>
       </div>
-
     </div>
   </div>
 
-  <footer>
-    &copy; 2025 Hacker Vault | Stay Invisible, Stay Safe.
-  </footer>
+  <footer>© 2025 Hacker Vault - All rights reserved.</footer>
 
-  <!-- Matrix rain JS -->
   <script>
+    // Matrix rain effect
     const canvas = document.getElementById('matrix');
-    const ctx = canvas.getContext
+    const ctx = canvas.getContext('2d');
+
+    // Fullscreen canvas
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    // Characters to use
+    const letters = "アカサタナハマヤラワガザダバパ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const fontSize = 16;
+    const columns = Math.floor(width / fontSize);
+
+    // Array of drops - one per column
+    const drops = new Array(columns).fill(1);
+
+    function draw() {
+      // Translucent BG to create fade effect
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, width, height);
+
+      ctx.fillStyle = "#00ff99"; // Neon green
+      ctx.font = fontSize + "px 'Share Tech Mono'";
+
+      for (let i = 0; i < drops.length; i++) {
+        // Pick a random character
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        // Draw the character at (x,y)
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        // Reset drop if it goes beyond bottom or randomly to create flicker
+        if (drops[i] * fontSize > height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    setInterval(draw, 50);
+
+    // Resize canvas on window resize
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+  </script>
+</body>
+</html>
