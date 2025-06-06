@@ -2,61 +2,155 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shop Now | Stylish Products</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CyberStore | Dark Tech Deals</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png'), #0f0f0f;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .glow-text {
+      text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+    }
+
+    .card {
+      background: rgba(20, 20, 20, 0.9);
+      border: 1px solid #0ff3;
+      box-shadow: 0 0 10px #0ff3;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #0ff8;
+    }
+
+    .btn {
+      background-color: #0ff;
+      color: #000;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #00f2ff;
+      transform: scale(1.05);
+    }
+  </style>
 </head>
-<body class="bg-gray-100 text-gray-800 font-sans">
+<body>
 
   <!-- Hero Section -->
-  <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20 text-center">
-    <h1 class="text-5xl font-bold mb-4">Discover Your Next Favorite Product</h1>
-    <p class="text-xl mb-6">Shop stylish and premium items at unbeatable prices</p>
-    <a href="#products" class="bg-white text-indigo-600 font-semibold px-6 py-3 rounded-full hover:bg-gray-200 transition">Shop Now</a>
+  <header class="text-center py-20">
+    <h1 class="text-5xl font-bold glow-text mb-4">⚡ Cyber Deals Zone ⚡</h1>
+    <p class="text-lg text-gray-400 mb-6">Gear up with exclusive dark-tech products. Limited Time Only!</p>
+    <a href="#products" class="btn px-6 py-3 rounded text-lg">Browse Products</a>
   </header>
 
-  <!-- Products Section -->
-  <section id="products" class="py-16 px-6">
+  <!-- Products Grid -->
+  <section id="products" class="px-6 py-16">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-12">Our Bestsellers</h2>
-      <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <h2 class="text-3xl font-bold text-center glow-text mb-12">🛒 Featured Products</h2>
+      <div class="grid gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 
-        <!-- Product Card Template (copy this block for more products) -->
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src="https://via.placeholder.com/300x200" alt="Product 1" class="w-full h-48 object-cover">
-          <div class="p-4">
-            <h3 class="text-lg font-semibold">Product Name 1</h3>
-            <p class="text-sm text-gray-500 mb-2">Short product description goes here.</p>
-            <div class="flex items-center justify-between">
-              <span class="text-indigo-600 font-bold text-lg">$29.99</span>
-              <a href="#" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Buy</a>
-            </div>
+        <!-- Product Cards (Repeat & customize) -->
+        <div class="card p-4 rounded-lg">
+          <img src="https://via.placeholder.com/300x200/0ff/000?text=Cyber+1" alt="Product 1" class="rounded mb-4">
+          <h3 class="text-xl font-semibold mb-1">Cyber Keyboard</h3>
+          <p class="text-sm text-gray-400 mb-2">Mechanical RGB with hacker style.</p>
+          <div class="flex justify-between items-center">
+            <span class="text-xl font-bold text-cyan-400">$59</span>
+            <a href="#" class="btn px-4 py-2 rounded text-sm">Buy</a>
           </div>
         </div>
 
-        <!-- Repeat this product card block for more products (at least 8) -->
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src="https://via.placeholder.com/300x200" alt="Product 2" class="w-full h-48 object-cover">
-          <div class="p-4">
-            <h3 class="text-lg font-semibold">Product Name 2</h3>
-            <p class="text-sm text-gray-500 mb-2">Elegant and modern design.</p>
-            <div class="flex items-center justify-between">
-              <span class="text-indigo-600 font-bold text-lg">$39.99</span>
-              <a href="#" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Buy</a>
-            </div>
+        <div class="card p-4 rounded-lg">
+          <img src="https://via.placeholder.com/300x200/0ff/000?text=Cyber+2" alt="Product 2" class="rounded mb-4">
+          <h3 class="text-xl font-semibold mb-1">Hacker Mouse</h3>
+          <p class="text-sm text-gray-400 mb-2">Precision tracking, stealth design.</p>
+          <div class="flex justify-between items-center">
+            <span class="text-xl font-bold text-cyan-400">$39</span>
+            <a href="#" class="btn px-4 py-2 rounded text-sm">Buy</a>
           </div>
         </div>
 
-        <!-- Add at least 6 more cards below -->
-        <!-- ... -->
+        <!-- Repeat to reach 8+ products -->
+        <div class="card p-4 rounded-lg">
+          <img src="https://via.placeholder.com/300x200/0ff/000?text=Cyber+3" alt="Product 3" class="rounded mb-4">
+          <h3 class="text-xl font-semibold mb-1">Cyber Hoodie</h3>
+          <p class="text-sm text-gray-400 mb-2">Dark mode streetwear edition.</p>
+          <div class="flex justify-between items-center">
+            <span class="text-xl font-bold text-cyan-400">$45</span>
+            <a href="#" class="btn px-4 py-2 rounded text-sm">Buy</a>
+          </div>
+        </div>
+
+        <!-- 5 More Items (add as needed) -->
+        <!-- Product 4 -->
+        <div class="card p-4 rounded-lg">
+          <img src="https://via.placeholder.com/300x200/0ff/000?text=Cyber+4" alt="Product 4" class="rounded mb-4">
+          <h3 class="text-xl font-semibold mb-1">Encrypted USB</h3>
+          <p class="text-sm text-gray-400 mb-2">Keep your files safe.</p>
+          <div class="flex justify-between items-center">
+            <span class="text-xl font-bold text-cyan-400">$25</span>
+            <a href="#" class="btn px-4 py-2 rounded text-sm">Buy</a>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="card p-4 rounded-lg">
+          <img src="https://via.placeholder.com/300x200/0ff/000?text=Cyber+5" alt="Product 5" class="rounded mb-4">
+          <h3 class="text-xl font-semibold mb-1">Tech Backpack</h3>
+          <p class="text-sm text-gray-400 mb-2">Waterproof & sleek.</p>
+          <div class="flex justify-between items-center">
+            <span class="text-xl font-bold text-cyan-400">$89</span>
+            <a href="#" class="btn px-4 py-2 rounded text-sm">Buy</a>
+          </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="card p-4 rounded-lg">
+          <img src="https://via.placeholder.com/300x200/0ff/000?text=Cyber+6" alt="Product 6" class="rounded mb-4">
+          <h3 class="text-xl font-semibold mb-1">LED Headphones</h3>
+          <p class="text-sm text-gray-400 mb-2">Bass boost with neon glow.</p>
+          <div class="flex justify-between items-center">
+            <span class="text-xl font-bold text-cyan-400">$79</span>
+            <a href="#" class="btn px-4 py-2 rounded text-sm">Buy</a>
+          </div>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="card p-4 rounded-lg">
+          <img src="https://via.placeholder.com/300x200/0ff/000?text=Cyber+7" alt="Product 7" class="rounded mb-4">
+          <h3 class="text-xl font-semibold mb-1">Minimal Wallet</h3>
+          <p class="text-sm text-gray-400 mb-2">Secure & slim RFID-blocker.</p>
+          <div class="flex justify-between items-center">
+            <span class="text-xl font-bold text-cyan-400">$19</span>
+            <a href="#" class="btn px-4 py-2 rounded text-sm">Buy</a>
+          </div>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="card p-4 rounded-lg">
+          <img src="https://via.placeholder.com/300x200/0ff/000?text=Cyber+8" alt="Product 8" class="rounded mb-4">
+          <h3 class="text-xl font-semibold mb-1">Matrix Lamp</h3>
+          <p class="text-sm text-gray-400 mb-2">Green code glow desk light.</p>
+          <div class="flex justify-between items-center">
+            <span class="text-xl font-bold text-cyan-400">$34</span>
+            <a href="#" class="btn px-4 py-2 rounded text-sm">Buy</a>
+          </div>
+        </div>
 
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-white py-8 text-center text-gray-500 text-sm">
-    &copy; 2025 YourBrand. All rights reserved.
+  <footer class="text-center text-sm text-gray-500 py-10 border-t border-gray-700">
+    &copy; 2025 CyberStore™. Stay encrypted.
   </footer>
 
 </body>
