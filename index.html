@@ -3,154 +3,145 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CyberStore | Dark Tech Deals</title>
+  <title>🕶️ Hacker Vault | Dark Market</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
   <style>
     body {
-      background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png'), #0f0f0f;
-      color: #e0e0e0;
-      font-family: 'Segoe UI', sans-serif;
+      background: #0c0c0c url('https://www.transparenttextures.com/patterns/cubes.png');
+      color: #00ffcc;
+      font-family: 'Share Tech Mono', monospace;
     }
 
-    .glow-text {
-      text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+    h1, h2, h3 {
+      text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
     }
 
-    .card {
-      background: rgba(20, 20, 20, 0.9);
-      border: 1px solid #0ff3;
-      box-shadow: 0 0 10px #0ff3;
+    .glitch {
+      position: relative;
+      color: #00ffcc;
+      font-weight: bold;
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 2px;
+      top: 0;
+      width: 100%;
+      overflow: hidden;
+      color: #0ff;
+      background: black;
+      clip: rect(0, 900px, 0, 0);
+    }
+
+    .glitch::before {
+      animation: glitchTop 2s infinite linear alternate-reverse;
+    }
+
+    .glitch::after {
+      left: -2px;
+      animation: glitchBottom 2s infinite linear alternate-reverse;
+    }
+
+    @keyframes glitchTop {
+      0% { clip: rect(0, 9999px, 0, 0); }
+      5% { clip: rect(0, 9999px, 30px, 0); }
+      10% { clip: rect(0, 9999px, 0, 0); }
+    }
+
+    @keyframes glitchBottom {
+      0% { clip: rect(0, 9999px, 0, 0); }
+      5% { clip: rect(20px, 9999px, 60px, 0); }
+      10% { clip: rect(0, 9999px, 0, 0); }
+    }
+
+    .btn-hack {
+      background: #00ffcc;
+      color: #000;
+      font-weight: bold;
+      transition: all 0.3s ease-in-out;
+      text-shadow: 0 0 5px #000;
+    }
+
+    .btn-hack:hover {
+      background: #0ff;
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #0ff;
+    }
+
+    .product-card {
+      background: rgba(0, 0, 0, 0.85);
+      border: 1px solid #00ffcc44;
+      padding: 1rem;
+      border-radius: 8px;
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #0ff8;
-    }
-
-    .btn {
-      background-color: #0ff;
-      color: #000;
-      transition: background-color 0.3s, transform 0.3s;
-    }
-
-    .btn:hover {
-      background-color: #00f2ff;
-      transform: scale(1.05);
+    .product-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 20px #0ff5;
     }
   </style>
 </head>
-<body>
+<body class="p-6">
 
-  <!-- Hero Section -->
-  <header class="text-center py-20">
-    <h1 class="text-5xl font-bold glow-text mb-4">⚡ Cyber Deals Zone ⚡</h1>
-    <p class="text-lg text-gray-400 mb-6">Gear up with exclusive dark-tech products. Limited Time Only!</p>
-    <a href="#products" class="btn px-6 py-3 rounded text-lg">Browse Products</a>
+  <!-- Hero -->
+  <header class="text-center py-12">
+    <h1 class="text-5xl glitch" data-text="🕶️ Hacker Vault">🕶️ Hacker Vault</h1>
+    <p class="text-lg mt-4 text-green-400">Your source for encrypted, neon-slick tech gear.</p>
+    <a href="#products" class="btn-hack inline-block mt-6 px-6 py-2 rounded">Enter the Market</a>
   </header>
 
-  <!-- Products Grid -->
-  <section id="products" class="px-6 py-16">
-    <div class="max-w-7xl mx-auto">
-      <h2 class="text-3xl font-bold text-center glow-text mb-12">🛒 Featured Products</h2>
-      <div class="grid gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+  <!-- Products -->
+  <section id="products" class="max-w-7xl mx-auto py-10">
+    <h2 class="text-3xl text-center mb-10">🔥 Blacklist Items</h2>
+    <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 
-        <!-- Product Cards (Repeat & customize) -->
-        <div class="card p-4 rounded-lg">
-          <img src="https://via.placeholder.com/300x200/0ff/000?text=Cyber+1" alt="Product 1" class="rounded mb-4">
-          <h3 class="text-xl font-semibold mb-1">Cyber Keyboard</h3>
-          <p class="text-sm text-gray-400 mb-2">Mechanical RGB with hacker style.</p>
-          <div class="flex justify-between items-center">
-            <span class="text-xl font-bold text-cyan-400">$59</span>
-            <a href="#" class="btn px-4 py-2 rounded text-sm">Buy</a>
-          </div>
+      <!-- Repeatable Product Card -->
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300x200/0ff/000?text=Cyber+Drive" alt="Cyber Drive" class="w-full mb-3 rounded">
+        <h3 class="text-xl mb-1">Cyber Drive</h3>
+        <p class="text-sm text-green-300 mb-2">256-bit encrypted flash USB</p>
+        <div class="flex justify-between items-center">
+          <span class="font-bold text-cyan-400">$49</span>
+          <a href="#" class="btn-hack px-4 py-1 rounded text-sm">Buy</a>
         </div>
-
-        <div class="card p-4 rounded-lg">
-          <img src="https://via.placeholder.com/300x200/0ff/000?text=Cyber+2" alt="Product 2" class="rounded mb-4">
-          <h3 class="text-xl font-semibold mb-1">Hacker Mouse</h3>
-          <p class="text-sm text-gray-400 mb-2">Precision tracking, stealth design.</p>
-          <div class="flex justify-between items-center">
-            <span class="text-xl font-bold text-cyan-400">$39</span>
-            <a href="#" class="btn px-4 py-2 rounded text-sm">Buy</a>
-          </div>
-        </div>
-
-        <!-- Repeat to reach 8+ products -->
-        <div class="card p-4 rounded-lg">
-          <img src="https://via.placeholder.com/300x200/0ff/000?text=Cyber+3" alt="Product 3" class="rounded mb-4">
-          <h3 class="text-xl font-semibold mb-1">Cyber Hoodie</h3>
-          <p class="text-sm text-gray-400 mb-2">Dark mode streetwear edition.</p>
-          <div class="flex justify-between items-center">
-            <span class="text-xl font-bold text-cyan-400">$45</span>
-            <a href="#" class="btn px-4 py-2 rounded text-sm">Buy</a>
-          </div>
-        </div>
-
-        <!-- 5 More Items (add as needed) -->
-        <!-- Product 4 -->
-        <div class="card p-4 rounded-lg">
-          <img src="https://via.placeholder.com/300x200/0ff/000?text=Cyber+4" alt="Product 4" class="rounded mb-4">
-          <h3 class="text-xl font-semibold mb-1">Encrypted USB</h3>
-          <p class="text-sm text-gray-400 mb-2">Keep your files safe.</p>
-          <div class="flex justify-between items-center">
-            <span class="text-xl font-bold text-cyan-400">$25</span>
-            <a href="#" class="btn px-4 py-2 rounded text-sm">Buy</a>
-          </div>
-        </div>
-
-        <!-- Product 5 -->
-        <div class="card p-4 rounded-lg">
-          <img src="https://via.placeholder.com/300x200/0ff/000?text=Cyber+5" alt="Product 5" class="rounded mb-4">
-          <h3 class="text-xl font-semibold mb-1">Tech Backpack</h3>
-          <p class="text-sm text-gray-400 mb-2">Waterproof & sleek.</p>
-          <div class="flex justify-between items-center">
-            <span class="text-xl font-bold text-cyan-400">$89</span>
-            <a href="#" class="btn px-4 py-2 rounded text-sm">Buy</a>
-          </div>
-        </div>
-
-        <!-- Product 6 -->
-        <div class="card p-4 rounded-lg">
-          <img src="https://via.placeholder.com/300x200/0ff/000?text=Cyber+6" alt="Product 6" class="rounded mb-4">
-          <h3 class="text-xl font-semibold mb-1">LED Headphones</h3>
-          <p class="text-sm text-gray-400 mb-2">Bass boost with neon glow.</p>
-          <div class="flex justify-between items-center">
-            <span class="text-xl font-bold text-cyan-400">$79</span>
-            <a href="#" class="btn px-4 py-2 rounded text-sm">Buy</a>
-          </div>
-        </div>
-
-        <!-- Product 7 -->
-        <div class="card p-4 rounded-lg">
-          <img src="https://via.placeholder.com/300x200/0ff/000?text=Cyber+7" alt="Product 7" class="rounded mb-4">
-          <h3 class="text-xl font-semibold mb-1">Minimal Wallet</h3>
-          <p class="text-sm text-gray-400 mb-2">Secure & slim RFID-blocker.</p>
-          <div class="flex justify-between items-center">
-            <span class="text-xl font-bold text-cyan-400">$19</span>
-            <a href="#" class="btn px-4 py-2 rounded text-sm">Buy</a>
-          </div>
-        </div>
-
-        <!-- Product 8 -->
-        <div class="card p-4 rounded-lg">
-          <img src="https://via.placeholder.com/300x200/0ff/000?text=Cyber+8" alt="Product 8" class="rounded mb-4">
-          <h3 class="text-xl font-semibold mb-1">Matrix Lamp</h3>
-          <p class="text-sm text-gray-400 mb-2">Green code glow desk light.</p>
-          <div class="flex justify-between items-center">
-            <span class="text-xl font-bold text-cyan-400">$34</span>
-            <a href="#" class="btn px-4 py-2 rounded text-sm">Buy</a>
-          </div>
-        </div>
-
       </div>
+
+      <!-- Copy and customize this block for 7+ more -->
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300x200/0ff/000?text=Neon+Mouse" alt="Neon Mouse" class="w-full mb-3 rounded">
+        <h3 class="text-xl mb-1">Neon Mouse</h3>
+        <p class="text-sm text-green-300 mb-2">Silent click + RGB stealth</p>
+        <div class="flex justify-between items-center">
+          <span class="font-bold text-cyan-400">$39</span>
+          <a href="#" class="btn-hack px-4 py-1 rounded text-sm">Buy</a>
+        </div>
+      </div>
+
+      <!-- Add more cards here -->
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300x200/0ff/000?text=Tech+Goggles" alt="Tech Goggles" class="w-full mb-3 rounded">
+        <h3 class="text-xl mb-1">Tech Goggles</h3>
+        <p class="text-sm text-green-300 mb-2">Night vision hacker style</p>
+        <div class="flex justify-between items-center">
+          <span class="font-bold text-cyan-400">$99</span>
+          <a href="#" class="btn-hack px-4 py-1 rounded text-sm">Buy</a>
+        </div>
+      </div>
+
+      <!-- ...Add up to 8+ items -->
+      <!-- Customize each one with unique images & info -->
+
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="text-center text-sm text-gray-500 py-10 border-t border-gray-700">
-    &copy; 2025 CyberStore™. Stay encrypted.
+  <footer class="mt-16 text-center text-sm text-gray-500 border-t border-gray-700 pt-6">
+    <p>&copy; 2025 Hacker Vault. Stay ghost.</p>
   </footer>
 
 </body>
