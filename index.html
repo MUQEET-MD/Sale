@@ -6,28 +6,28 @@
   <title>Hacker Vault - Stylish Sale Page</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <style>
-    /* Basic Reset */
+    /* Reset */
     * {
       margin: 0; padding: 0; box-sizing: border-box;
     }
     body {
       font-family: 'Share Tech Mono', monospace;
-      background: black;
+      background: #000;
       color: #00ff99;
       overflow-x: hidden;
       min-height: 100vh;
       position: relative;
     }
 
-    /* Matrix Rain Background */
-    canvas#matrix {
+    /* Particle Background */
+    canvas#particles {
       position: fixed;
       top: 0; left: 0;
       width: 100%;
       height: 100%;
       z-index: -1;
       display: block;
-      background-color: black;
+      background-color: #000;
     }
 
     /* Container */
@@ -215,7 +215,7 @@
 </head>
 <body>
 
-  <canvas id="matrix"></canvas>
+  <canvas id="particles"></canvas>
 
   <div class="container">
     <h1 class="glitch" data-text="Hacker Vault">Hacker Vault</h1>
@@ -299,51 +299,95 @@
   <footer>© 2025 Hacker Vault - All rights reserved.</footer>
 
   <script>
-    // Matrix rain effect
-    const canvas = document.getElementById('matrix');
+    const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
+    let width, height;
+    let particlesArray;
 
-    // Fullscreen canvas
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
+    // Particle class
+    class Particle {
+      constructor(x, y, size, speedX, speedY) {
+        this.x = x;
+        this.y = y;
+        this.size = size;
+        this.speedX = speedX;
+        this.speedY = speedY;
+      }
 
-    // Characters to use
-    const letters = "アカサタナハマヤラワガザダバパ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const fontSize = 16;
-    const columns = Math.floor(width / fontSize);
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
 
-    // Array of drops - one per column
-    const drops = new Array(columns).fill(1);
+        // Wrap around screen edges
+        if (this.x > width) this.x = 0;
+        else if (this.x < 0) this.x = width;
+        if (this.y > height) this.y = 0;
+        else if (this.y < 0) this.y = height;
+      }
 
-    function draw() {
-      // Translucent BG to create fade effect
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-      ctx.fillRect(0, 0, width, height);
-
-      ctx.fillStyle = "#00ff99"; // Neon green
-      ctx.font = fontSize + "px 'Share Tech Mono'";
-
-      for (let i = 0; i < drops.length; i++) {
-        // Pick a random character
-        const text = letters.charAt(Math.floor(Math.random() * letters.length));
-        // Draw the character at (x,y)
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-        // Reset drop if it goes beyond bottom or randomly to create flicker
-        if (drops[i] * fontSize > height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
-        drops[i]++;
+      draw() {
+        ctx.fillStyle = '#00ff99';
+        ctx.shadowColor = '#00ff99';
+        ctx.shadowBlur = 8;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
       }
     }
 
-    setInterval(draw, 50);
+    function initParticles(num) {
+      particlesArray = [];
+      for (let i = 0; i < num; i++) {
+        const size = Math.random() * 2 + 1;
+        const x = Math.random() * width;
+        const y = Math.random() * height;
+        const speedX = (Math.random() - 0.5) * 0.5;
+        const speedY = (Math.random() - 0.5) * 0.5;
+        particlesArray.push(new Particle(x, y, size, speedX, speedY));
+      }
+    }
 
-    // Resize canvas on window resize
-    window.addEventListener('resize', () => {
+    function connectParticles() {
+      for (let a = 0; a < particlesArray.length; a++) {
+        for (let b = a + 1; b < particlesArray.length; b++) {
+          let dx = particlesArray[a].x - particlesArray[b].x;
+          let dy = particlesArray[a].y - particlesArray[b].y;
+          let distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < 120) {
+            ctx.strokeStyle = 'rgba(0, 255, 153,' + (1 - distance / 120) + ')';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      particlesArray.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      connectParticles();
+      requestAnimationFrame(animate);
+    }
+
+    function resize() {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
-    });
+      initParticles(80);
+    }
+
+    window.addEventListener('resize', resize);
+
+    // Initialize
+    resize();
+    animate();
   </script>
+
 </body>
 </html>
